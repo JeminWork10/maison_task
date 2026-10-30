@@ -15,8 +15,8 @@ extension StringExt on String {
 
 extension NumExt on num {
   Duration get milliseconds => Duration(
-        microseconds: (this * Duration.microsecondsPerMillisecond).round(),
-      );
+    microseconds: (this * Duration.microsecondsPerMillisecond).round(),
+  );
 
   Duration get seconds =>
       Duration(milliseconds: (this * Duration.millisecondsPerSecond).round());
@@ -70,16 +70,14 @@ class _DetachedNavigator extends NavigatorState {
   Future<T?> pushNamed<T extends Object?>(
     String routeName, {
     Object? arguments,
-  }) =>
-      Future<T?>.value();
+  }) => Future<T?>.value();
 
   @override
   Future<T?> pushNamedAndRemoveUntil<T extends Object?>(
     String newRouteName,
     RoutePredicate predicate, {
     Object? arguments,
-  }) =>
-      Future<T?>.value();
+  }) => Future<T?>.value();
 }
 
 extension IterableExt<T> on Iterable<T> {

@@ -109,7 +109,9 @@ class ProductModel {
       discountPercentage: (json['discountPercentage'] as num?)?.toDouble() ?? 0,
       rating: (json['rating'] as num?)?.toDouble() ?? 0,
       stock: (json['stock'] as num?)?.toInt() ?? 0,
-      tags: rawTags is List ? rawTags.map((e) => e.toString()).toList() : const [],
+      tags: rawTags is List
+          ? rawTags.map((e) => e.toString()).toList()
+          : const [],
       brand: json['brand'] as String?,
       sku: json['sku'] as String?,
       warrantyInformation: json['warrantyInformation'] as String?,
@@ -117,9 +119,11 @@ class ProductModel {
       availabilityStatus: json['availabilityStatus'] as String?,
       reviews: rawReviews is List
           ? rawReviews
-              .whereType<Map>()
-              .map((e) => ProductReview.fromJson(Map<String, dynamic>.from(e)))
-              .toList()
+                .whereType<Map>()
+                .map(
+                  (e) => ProductReview.fromJson(Map<String, dynamic>.from(e)),
+                )
+                .toList()
           : const [],
       returnPolicy: json['returnPolicy'] as String?,
       minimumOrderQuantity: (json['minimumOrderQuantity'] as num?)?.toInt(),

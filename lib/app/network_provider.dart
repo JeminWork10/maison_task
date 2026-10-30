@@ -151,10 +151,7 @@ class NetworkProvider extends ChangeNotifier {
                       style: styleW500S14.copyWith(color: AppColors.text06),
                     ),
                     20.h.spaceVertical,
-                    CommonButton(
-                      title: 'Try Again',
-                      onTap: _onTryAgainTap,
-                    ),
+                    CommonButton(title: 'Try Again', onTap: _onTryAgainTap),
                   ],
                 ),
               ),

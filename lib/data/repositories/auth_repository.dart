@@ -13,11 +13,7 @@ class AuthRepository {
     final response = await repoRequest(
       type: RequestType.post,
       path: ApiConstants.authLogin,
-      body: {
-        'username': username,
-        'password': password,
-        'expiresInMins': 60,
-      },
+      body: {'username': username, 'password': password, 'expiresInMins': 60},
       cancelToken: cancelToken,
     );
 

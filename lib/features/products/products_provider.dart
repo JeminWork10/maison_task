@@ -83,7 +83,9 @@ class ProductsProvider extends ChangeNotifier {
       final existingIds = products.map((item) => item.id).toSet();
       final fresh = reset
           ? result.items
-          : result.items.where((item) => !existingIds.contains(item.id)).toList();
+          : result.items
+                .where((item) => !existingIds.contains(item.id))
+                .toList();
 
       if (reset) {
         products = fresh;

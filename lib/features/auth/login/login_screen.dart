@@ -35,11 +35,11 @@ class _LoginScreenState extends State<LoginScreen>
     );
     _formSlide = Tween<Offset>(begin: const Offset(0, 0.08), end: Offset.zero)
         .animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.2, 1.0, curve: Curves.easeOutCubic),
-      ),
-    );
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.2, 1.0, curve: Curves.easeOutCubic),
+          ),
+        );
     _controller.forward();
   }
 
@@ -145,14 +145,6 @@ class _LoginScreenState extends State<LoginScreen>
                                       : Icons.visibility_outlined,
                                   color: AppColors.text06,
                                 ),
-                              ),
-                            ),
-                            14.h.spaceVertical,
-                            Text(
-                              'Demo · ${ApiConstants.testUsername} / ${ApiConstants.testPassword}',
-                              style: styleW400S12.copyWith(
-                                color: AppColors.grey2,
-                                letterSpacing: 0.2,
                               ),
                             ),
                             28.h.spaceVertical,

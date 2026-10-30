@@ -30,22 +30,22 @@ class AppColors {
   static const Color gold = Color(0xFFC4A574);
 
   static LinearGradient get brandHeroGradient => const LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [primaryDeep, primary, primarySoft],
-        stops: [0.0, 0.45, 1.0],
-      );
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [primaryDeep, primary, primarySoft],
+    stops: [0.0, 0.45, 1.0],
+  );
 
   static LinearGradient get pageAtmosphere => LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          bgWash.withValues(alpha: 0.55),
-          bg,
-          surface.withValues(alpha: 0.9),
-        ],
-        stops: const [0.0, 0.35, 1.0],
-      );
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      bgWash.withValues(alpha: 0.55),
+      bg,
+      surface.withValues(alpha: 0.9),
+    ],
+    stops: const [0.0, 0.35, 1.0],
+  );
 
   static MaterialColor generateMaterialColor() {
     return MaterialColor(primary.hashCode, {

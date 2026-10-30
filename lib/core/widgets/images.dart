@@ -69,7 +69,8 @@ class _ImageErrorBox extends StatelessWidget {
       child: ColoredBox(
         color: AppColors.text01,
         child: Center(
-          child: errorWidget ??
+          child:
+              errorWidget ??
               Icon(
                 Icons.image_not_supported_outlined,
                 size: 18.h,

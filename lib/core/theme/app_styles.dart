@@ -42,8 +42,4 @@ final styleDisplayS34 = _display(FontWeight.w600, 34);
 final styleDisplayS42 = _display(FontWeight.w500, 42, letterSpacing: -0.8);
 final styleDisplayS48 = _display(FontWeight.w500, 48, letterSpacing: -1.0);
 
-final styleEyebrow = _ui(
-  FontWeight.w600,
-  11,
-  letterSpacing: 1.8,
-);
+final styleEyebrow = _ui(FontWeight.w600, 11, letterSpacing: 1.8);

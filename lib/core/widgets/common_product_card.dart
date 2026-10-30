@@ -43,10 +43,7 @@ class CommonProductCard extends StatelessWidget {
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
-                        CachedImage(
-                          product.thumbnail,
-                          fit: BoxFit.cover,
-                        ),
+                        CachedImage(product.thumbnail, fit: BoxFit.cover),
                         if (product.discountPercentage > 0)
                           Positioned(
                             left: 8.w,

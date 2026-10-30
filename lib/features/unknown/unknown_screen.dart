@@ -13,9 +13,7 @@ class UnknownScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: Center(
-        child: Text('Page not found', style: styleW700S22),
-      ),
+      body: Center(child: Text('Page not found', style: styleW700S22)),
     );
   }
 }

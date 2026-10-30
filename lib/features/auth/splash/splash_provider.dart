@@ -113,16 +113,15 @@ class SplashProvider extends ChangeNotifier {
 
     // Prefer the root navigator key so splash never races a disposed local
     // NavigatorState during the first frame after bootstrap.
-    final navigator = navigatorKey.currentState ??
+    final navigator =
+        navigatorKey.currentState ??
         (context.mounted ? Navigator.maybeOf(context) : null);
     if (navigator == null) return;
     _enteredApp = true;
     _splashInit = true;
 
     navigator.pushNamedAndRemoveUntil(
-      AuthSession.isLoggedIn
-          ? ProductsScreen.routeName
-          : LoginScreen.routeName,
+      AuthSession.isLoggedIn ? ProductsScreen.routeName : LoginScreen.routeName,
       (route) => false,
     );
   }

@@ -41,11 +41,7 @@ class CommonIconButton extends StatelessWidget {
         isDisabled: isDisabled,
         radius: radius,
         child: Center(
-          child: Icon(
-            icon,
-            size: iconSize,
-            color: iconColor ?? AppColors.text,
-          ),
+          child: Icon(icon, size: iconSize, color: iconColor ?? AppColors.text),
         ),
       ),
     );

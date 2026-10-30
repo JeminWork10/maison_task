@@ -37,9 +37,6 @@ class ApiConstants {
   }) {
     final safeLimit = limit.clamp(1, maxLimit);
     final safePage = page < 1 ? defaultPage : page;
-    return {
-      'limit': safeLimit,
-      'skip': (safePage - 1) * safeLimit,
-    };
+    return {'limit': safeLimit, 'skip': (safePage - 1) * safeLimit};
   }
 }

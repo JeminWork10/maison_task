@@ -47,40 +47,40 @@ class ProductDetailsScreen extends StatelessWidget {
           switchKey: isLoading
               ? 'loading'
               : errorMessage != null
-                  ? 'error'
-                  : 'data',
+              ? 'error'
+              : 'data',
           child: isLoading
               ? const Center(child: AppLoader())
               : errorMessage != null || product == null
-                  ? Column(
-                      children: [
-                        SafeArea(
-                          bottom: false,
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 12.w),
-                              child: CommonIconButton(
-                                icon: Icons.arrow_back_ios_new_rounded,
-                                height: 36.w,
-                                width: 36.w,
-                                iconSize: 16.h,
-                                borderRadius: 8.r,
-                                buttonColor: AppColors.surface,
-                                onTap: () => context.navigator.pop(),
-                              ),
-                            ),
+              ? Column(
+                  children: [
+                    SafeArea(
+                      bottom: false,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 12.w),
+                          child: CommonIconButton(
+                            icon: Icons.arrow_back_ios_new_rounded,
+                            height: 36.w,
+                            width: 36.w,
+                            iconSize: 16.h,
+                            borderRadius: 8.r,
+                            buttonColor: AppColors.surface,
+                            onTap: () => context.navigator.pop(),
                           ),
                         ),
-                        Expanded(
-                          child: ErrorView(
-                            message: errorMessage ?? 'Product not found',
-                            onRetry: state.loadDetail,
-                          ),
-                        ),
-                      ],
-                    )
-                  : _ProductDetailsBody(product: product),
+                      ),
+                    ),
+                    Expanded(
+                      child: ErrorView(
+                        message: errorMessage ?? 'Product not found',
+                        onRetry: state.loadDetail,
+                      ),
+                    ),
+                  ],
+                )
+              : _ProductDetailsBody(product: product),
         ),
       ),
     );
@@ -181,131 +181,133 @@ class _ProductDetailsBodyState extends State<_ProductDetailsBody> {
               AppConstants.horizontalPadding,
               AppConstants.safeAreaPadding.bottom + 28.h,
             ),
-          sliver: SliverList(
-            delegate: SliverChildListDelegate([
-              Text(
-                product.category.toUpperCase(),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: styleEyebrow.copyWith(color: AppColors.primary),
-              ),
-              10.h.spaceVertical,
-              Text(
-                product.title,
-                style: styleDisplayS28.copyWith(color: AppColors.primaryDeep),
-              ),
-              14.h.spaceVertical,
-              Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: 10.w,
-                runSpacing: 6.h,
-                children: [
-                  Text(
-                    '\$${product.price.formattedAmount}',
-                    style: styleW700S22.copyWith(color: AppColors.primary),
-                  ),
-                  if (product.discountPercentage > 0) ...[
+            sliver: SliverList(
+              delegate: SliverChildListDelegate([
+                Text(
+                  product.category.toUpperCase(),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: styleEyebrow.copyWith(color: AppColors.primary),
+                ),
+                10.h.spaceVertical,
+                Text(
+                  product.title,
+                  style: styleDisplayS28.copyWith(color: AppColors.primaryDeep),
+                ),
+                14.h.spaceVertical,
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 10.w,
+                  runSpacing: 6.h,
+                  children: [
                     Text(
-                      '\$${product.originalPrice.toStringAsFixed(2)}',
-                      style: styleW400S14.copyWith(
-                        color: AppColors.grey2,
-                        decoration: TextDecoration.lineThrough,
+                      '\$${product.price.formattedAmount}',
+                      style: styleW700S22.copyWith(color: AppColors.primary),
+                    ),
+                    if (product.discountPercentage > 0) ...[
+                      Text(
+                        '\$${product.originalPrice.toStringAsFixed(2)}',
+                        style: styleW400S14.copyWith(
+                          color: AppColors.grey2,
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 8.w,
+                          vertical: 3.h,
+                        ),
+                        color: AppColors.primary,
+                        child: Text(
+                          '-${product.discountPercentage.toStringAsFixed(0)}%',
+                          style: styleW600S12.copyWith(color: AppColors.white),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+                12.h.spaceVertical,
+                Row(
+                  children: [
+                    Icon(
+                      Icons.star_rounded,
+                      color: AppColors.champagne,
+                      size: 18.h,
+                    ),
+                    4.w.spaceHorizontal,
+                    Expanded(
+                      child: Text(
+                        '${product.rating.toStringAsFixed(1)} · ${product.reviews.length} reviews',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: styleW500S14.copyWith(color: AppColors.text06),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 3.h,
-                      ),
-                      color: AppColors.primary,
+                    8.w.spaceHorizontal,
+                    Flexible(
                       child: Text(
-                        '-${product.discountPercentage.toStringAsFixed(0)}%',
-                        style: styleW600S12.copyWith(color: AppColors.white),
+                        product.isInStock
+                            ? 'In stock · ${product.stock}'
+                            : 'Out of stock',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.end,
+                        style: styleW600S14.copyWith(
+                          color: product.isInStock
+                              ? AppColors.green
+                              : AppColors.red,
+                        ),
                       ),
                     ),
                   ],
-                ],
-              ),
-              12.h.spaceVertical,
-              Row(
-                children: [
-                  Icon(
-                    Icons.star_rounded,
-                    color: AppColors.champagne,
-                    size: 18.h,
-                  ),
-                  4.w.spaceHorizontal,
-                  Expanded(
-                    child: Text(
-                      '${product.rating.toStringAsFixed(1)} · ${product.reviews.length} reviews',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: styleW500S14.copyWith(color: AppColors.text06),
-                    ),
-                  ),
-                  8.w.spaceHorizontal,
-                  Flexible(
-                    child: Text(
-                      product.isInStock
-                          ? 'In stock · ${product.stock}'
-                          : 'Out of stock',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.end,
-                      style: styleW600S14.copyWith(
-                        color: product.isInStock
-                            ? AppColors.green
-                            : AppColors.red,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              28.h.spaceVertical,
-              Text(
-                'About',
-                style: styleW700S16.copyWith(color: AppColors.primaryDeep),
-              ),
-              8.h.spaceVertical,
-              Text(
-                product.description,
-                style: styleW400S14.copyWith(
-                  height: 1.55,
-                  color: AppColors.text08,
                 ),
-              ),
-              28.h.spaceVertical,
-              Text(
-                'Details',
-                style: styleW700S16.copyWith(color: AppColors.primaryDeep),
-              ),
-              12.h.spaceVertical,
-              _MetaRow(label: 'Brand', value: product.displayBrand),
-              _MetaRow(label: 'SKU', value: product.sku ?? '—'),
-              _MetaRow(
-                label: 'Availability',
-                value: product.availabilityStatus ?? '—',
-              ),
-              _MetaRow(
-                label: 'Warranty',
-                value: product.warrantyInformation ?? '—',
-              ),
-              _MetaRow(
-                label: 'Shipping',
-                value: product.shippingInformation ?? '—',
-              ),
-              if (product.reviews.isNotEmpty) ...[
                 28.h.spaceVertical,
                 Text(
-                  'Reviews',
+                  'About',
                   style: styleW700S16.copyWith(color: AppColors.primaryDeep),
                 ),
-                14.h.spaceVertical,
-                ...product.reviews.map((review) => _ReviewTile(review: review)),
-              ],
-            ]),
+                8.h.spaceVertical,
+                Text(
+                  product.description,
+                  style: styleW400S14.copyWith(
+                    height: 1.55,
+                    color: AppColors.text08,
+                  ),
+                ),
+                28.h.spaceVertical,
+                Text(
+                  'Details',
+                  style: styleW700S16.copyWith(color: AppColors.primaryDeep),
+                ),
+                12.h.spaceVertical,
+                _MetaRow(label: 'Brand', value: product.displayBrand),
+                _MetaRow(label: 'SKU', value: product.sku ?? '—'),
+                _MetaRow(
+                  label: 'Availability',
+                  value: product.availabilityStatus ?? '—',
+                ),
+                _MetaRow(
+                  label: 'Warranty',
+                  value: product.warrantyInformation ?? '—',
+                ),
+                _MetaRow(
+                  label: 'Shipping',
+                  value: product.shippingInformation ?? '—',
+                ),
+                if (product.reviews.isNotEmpty) ...[
+                  28.h.spaceVertical,
+                  Text(
+                    'Reviews',
+                    style: styleW700S16.copyWith(color: AppColors.primaryDeep),
+                  ),
+                  14.h.spaceVertical,
+                  ...product.reviews.map(
+                    (review) => _ReviewTile(review: review),
+                  ),
+                ],
+              ]),
+            ),
           ),
-        ),
         ],
       ),
     );
@@ -324,9 +326,7 @@ class _MetaRow extends StatelessWidget {
       width: double.maxFinite,
       padding: EdgeInsets.symmetric(vertical: 12.h),
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: AppColors.text01),
-        ),
+        border: Border(bottom: BorderSide(color: AppColors.text01)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -340,12 +340,7 @@ class _MetaRow extends StatelessWidget {
               style: styleW500S14.copyWith(color: AppColors.text06),
             ),
           ),
-          Expanded(
-            child: Text(
-              value,
-              style: styleW500S14,
-            ),
-          ),
+          Expanded(child: Text(value, style: styleW500S14)),
         ],
       ),
     );

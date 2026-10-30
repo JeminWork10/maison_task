@@ -43,11 +43,11 @@ class _SplashScreenState extends State<SplashScreen>
     );
     _slide = Tween<Offset>(begin: const Offset(0, 0.18), end: Offset.zero)
         .animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.25, 0.85, curve: Curves.easeOutCubic),
-      ),
-    );
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.25, 0.85, curve: Curves.easeOutCubic),
+          ),
+        );
     _controller.forward();
   }
 
@@ -135,7 +135,9 @@ class _SplashScreenState extends State<SplashScreen>
                               Text(
                                 AppConstants.appTagline,
                                 style: styleW400S14.copyWith(
-                                  color: AppColors.white.withValues(alpha: 0.72),
+                                  color: AppColors.white.withValues(
+                                    alpha: 0.72,
+                                  ),
                                 ),
                               ),
                             ],

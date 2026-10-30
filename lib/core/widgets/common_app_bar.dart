@@ -54,7 +54,8 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
               8.w.spaceHorizontal,
             ],
             Expanded(
-              child: titleWidget ??
+              child:
+                  titleWidget ??
                   Text(
                     title,
                     maxLines: 1,

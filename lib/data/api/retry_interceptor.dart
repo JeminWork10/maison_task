@@ -15,7 +15,7 @@ class RetryInterceptor extends Interceptor {
   ) async {
     final shouldRetry =
         err.type == DioExceptionType.connectionError ||
-            err.type == DioExceptionType.connectionTimeout;
+        err.type == DioExceptionType.connectionTimeout;
 
     final retryCount = err.requestOptions.extra[_retryCountKey] as int? ?? 0;
 

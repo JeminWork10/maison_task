@@ -29,8 +29,8 @@ class CustomSingleChildScroll extends StatelessWidget {
         switchKey: isLoading
             ? 'loading'
             : showEmpty
-                ? 'empty'
-                : 'data',
+            ? 'empty'
+            : 'data',
         child: _buildChild(context),
       ),
     );
@@ -45,7 +45,8 @@ class CustomSingleChildScroll extends StatelessWidget {
       return _refreshableEmpty(
         key: const ValueKey('empty'),
         canRefresh: onRefresh != null,
-        child: emptyWidget ??
+        child:
+            emptyWidget ??
             Text(
               emptyErrorMessage ?? 'No data found',
               textAlign: TextAlign.center,

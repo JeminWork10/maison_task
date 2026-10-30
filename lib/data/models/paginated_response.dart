@@ -63,9 +63,9 @@ class PaginatedResponse<T> {
     return PaginatedResponse<T>(
       items: list is List
           ? list
-              .whereType<Map>()
-              .map((e) => fromJsonT(Map<String, dynamic>.from(e)))
-              .toList()
+                .whereType<Map>()
+                .map((e) => fromJsonT(Map<String, dynamic>.from(e)))
+                .toList()
           : <T>[],
       pagination: PaginationMeta.fromDummyJson(data),
     );

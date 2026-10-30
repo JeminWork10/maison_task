@@ -52,8 +52,5 @@ Future<void> logoutUser({bool navigate = true}) async {
 
   final navigator = navigatorKey.currentState;
   if (navigator == null) return;
-  navigator.pushNamedAndRemoveUntil(
-    LoginScreen.routeName,
-    (route) => false,
-  );
+  navigator.pushNamedAndRemoveUntil(LoginScreen.routeName, (route) => false);
 }
